@@ -4,6 +4,9 @@ const express = require("express"); // import express
 const cors = require("cors"); // import cors
 const colors = require("colors"); // import colors dev dep
 
+//Routes import
+const articleRoutes = require("./rutas/articulo_routes");
+
 // Inicializar App
 console.log("Initializing Server...".bgBrightGreen);
 
@@ -19,34 +22,12 @@ const localHostUrl = "http://localhost:";
 app.use(cors());
 
 //Convertir body a Object JS
-app.use(express.json());
+app.use(express.json()); // get data from content-type app/json
+app.use(express.urlencoded({extended: true})); // geta data from content-type url-encoded
 
 //Crear Rutas
-app.get("/", (req, res) => {
-    console.log("Main EndPoint Executed Correctly");
-    return res.status(200).send(`
-        <div>
-            <h1>Main End Point Running!!</h1>
-        </div>
-    `);
+app.use("/api", articleRoutes);
 
-});
-
-app.get("/sending", (req, res) => {
-    console.log("Sending EndPoint Executed Correctly")
-    return res.status(200).json([
-        archivo1 = {
-            curso: "pruebas",
-            autor: "Axel",
-            url: "stuff"
-        },
-        archivo2 = {
-            curso: "pruebas2",
-            autor: "Axel Javier",
-            url: "test"
-        },
-    ]);
-});
 
 //Crear Servidor y Escuchar Peticiones
 app.listen(port, () => {
