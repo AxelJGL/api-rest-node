@@ -1,24 +1,24 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } =  require("mongoose");
 
 const ArticuloSchema = Schema({
-    title: {
+    titulo: {
         type: String,
         required: true
     },
-    content: {
+    contenido: {
         type: String,
         required: true
     },
-    date: {
+    fecha: {
         type: Date,
-        default: Date.now,
-        required: true
+        default: Date.now
     },
-    image: {
+    imagen:{
         type: String,
         default: "default.png"
     }
+
 });
 
-//module.exports = model("Articulo", ArticuloSchema, articulos);
-module.exports = model("Articulo", ArticuloSchema);
+module.exports = model("Articulo",ArticuloSchema, "articulos");
+                // nombre del modelo, Schema, nombre de la coleccion

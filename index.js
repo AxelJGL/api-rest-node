@@ -5,7 +5,7 @@ const cors = require("cors"); // import cors
 const colors = require("colors"); // import colors dev dep
 
 //Routes import
-const articleRoutes = require("./rutas/articulo_routes");
+
 
 // Inicializar App
 console.log("Initializing Server...".bgBrightGreen);
@@ -23,10 +23,10 @@ app.use(cors());
 
 //Convertir body a Object JS
 app.use(express.json()); // get data from content-type app/json
-app.use(express.urlencoded({extended: true})); // geta data from content-type url-encoded
+app.use(express.urlencoded({ extended: true })); // geta data from content-type url-encoded
 
 //Crear Rutas
-app.use("/api", articleRoutes);
+
 
 
 //Crear Servidor y Escuchar Peticiones
